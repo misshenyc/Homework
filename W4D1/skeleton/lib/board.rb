@@ -29,13 +29,13 @@ class Board
     cups[start_pos] = []
     i = start_pos + 1
     until stones.empty?
+      i += 1
+      i %= 13
       if current_player_name == name1
         cups[i] << stones.shift if i != 13
       elsif current_player_name == name2
         cups[i] << stones.shift if i != 6
       end
-      i += 1
-      i %= 13
     end
     render
     next_turn(i-1)
