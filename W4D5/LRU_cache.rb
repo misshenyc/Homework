@@ -14,23 +14,19 @@
 
     def add(el)
       # adds element to cache according to LRU principle
-      cache.shift if count >= size
-      cache.delete(el) if cache.include?(el)
-      cache << el
+    #   cache.shift if count >= size
+    #   cache.delete(el) if cache.include?(el)
+    #   cache << el
       
-    #   if !cache.include?(el) && count < size 
-    #     cache << el
-    #   elsif !cache.include?(el) && count > size 
-    #     cache << el
-    #     cache.shift
-    #   elsif cache.include?(el) && count < size
-    #     cache.delete(el)
-    #     cache << el
-    #   elsif cache.include?(el) && count > size
-    #     cache.delete(el)
-    #     cache << el
-    #     cache.shift
-    #   end
+      if !cache.include?(el) && count < size 
+        cache << el
+      elsif !cache.include?(el) && count >= size 
+        cache << el
+        cache.shift
+      else 
+        cache.delete(el)
+        cache << el
+      end
     end
 
     def show
